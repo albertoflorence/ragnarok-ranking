@@ -22,8 +22,8 @@ export const getRanking = ({ idLists, byName }) =>
 export const getPlayer = ({ byName }, name) => fromByName.getPlayer(byName, name)
 
 export const getDetails = ({ byName }, playerName) => ({
-  matou: blu(byName, byName[playerName].matou),
-  morreu: blu(byName, byName[playerName].morreu)
+  matou: populateClassAndGuild(byName, byName[playerName].matou),
+  morreu: populateClassAndGuild(byName, byName[playerName].morreu)
 })
 
 const countKillsOf = prop => obj => ({
@@ -47,13 +47,13 @@ const organizeData = obj =>
     }))
     .sort(sortByKill)
 
-const bla = ({ classes, guilds }) => ({
+const mapperClassAndGuild = ({ classes, guilds }) => ({
   classes: organizeData(classes),
   guilds: organizeData(guilds)
 })
 
-const blu = (byName, ids) =>
-  bla(
+const populateClassAndGuild = (byName, ids) =>
+  mapperClassAndGuild(
     populate(byName, ids).reduce(countKills, {
       classes: {},
       guilds: {}

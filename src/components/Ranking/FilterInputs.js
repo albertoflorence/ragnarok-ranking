@@ -19,7 +19,6 @@ const Input = withStyles(theme => ({
     fontSize: theme.typography.pxToRem(12),
     height: 'auto',
     padding: '10px 26px 10px 12px',
-    // Use the system font instead of the default Roboto font.
     fontFamily: [
       '-apple-system',
       'BlinkMacSystemFont',
