@@ -23,7 +23,7 @@ const useStyles = makeStyles(theme => ({
     'font-weight': 'bold',
     color: '#d47559',
     fontSize: theme.typography.pxToRem(17),
-    'text-align': 'start',
+    'text-align': 'end',
     'margin-right': '4px'
   },
   positionBox: {
@@ -68,7 +68,15 @@ export default function Ranking({ ranking, children }) {
     Cavaleiro: 'images/cavaleiro-icon.gif',
     Templário: 'images/templário-icon.gif',
     Odalisca: 'images/odalisca-icon.gif',
-    Bardo: 'images/bardo-icon.gif'
+    Bardo: 'images/bardo-icon.gif',
+    Arruaceiro: 'images/arruaceiro-icon.gif',
+    Ferreiro: 'images/ferreiro-icon.gif'
+  }
+
+  const getClassImage = className => {
+    const iconList = Object.keys(classesIcon)
+    const iconName = iconList.find(item => className.includes(item))
+    return classesIcon[iconName]
   }
 
   return (
@@ -82,7 +90,7 @@ export default function Ranking({ ranking, children }) {
         <ExpansionPanelSummary style={{ padding: '0' }}>
           <Grid container alignItems="center" direction="row" justify="space-between">
             <Grid item xs={2}>
-              <img style={{ width: '60px', height: 'auto' }} src={classesIcon[classe]} alt="" />
+              <img style={{ width: '60px', height: 'auto' }} src={getClassImage(classe)} alt="" />
             </Grid>
             <Grid item xs={4} sm={3}>
               <Typography className={classes.heading}>{player}</Typography>
